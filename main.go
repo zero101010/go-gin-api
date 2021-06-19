@@ -26,7 +26,8 @@ func main() {
 	// router.Use(gin.Logger())
 
 	router.POST("/foods", controllers.CreateFood)
-	// router.GET("/foods", controllers.GetFoods)
+	router.GET("/foods", controllers.GetFoods)
+	router.GET("/foods/:id", controllers.GetFood)
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, bson.M{"Application": "Food teste", "Status": "Up"})
 	})
