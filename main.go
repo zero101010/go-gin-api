@@ -29,7 +29,7 @@ func main() {
 	router.GET("/foods", controllers.GetFoods)
 	router.GET("/foods/:id", controllers.GetFood)
 	router.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, bson.M{"Application": "Food teste", "Status": "Up"})
+		c.JSON(http.StatusOK, bson.M{"Application": "hello world test", "Status": "Up"})
 	})
 	router.Run(":" + port)
 }
