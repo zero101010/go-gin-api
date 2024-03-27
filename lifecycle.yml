@@ -1,0 +1,33 @@
+---
+version: 0.0.3-alpha-1
+
+
+environment:
+  defaultServices:
+    - name: "api-rest-go"
+            
+services:
+  - name: 'api-rest-go'
+    github:
+      repository: 'zero101010/api-rest-go'
+      branchName: 'zero101010-patch-1'
+      docker:
+        defaultTag: 'main'
+        app:
+          dockerfilePath: 'sysops/dockerfiles/app.Dockerfile'
+          env:
+            PORT: "8080"
+          ports:
+            - 8080
+      deployment:
+        public: true
+        capacityType: "SPOT"
+        resource:
+          cpu:
+            request: "10m"
+          memory:
+            request: "100Mi"
+        readiness:
+          tcpSocketPort: 8080
+          httpGet:
+            port: 80
